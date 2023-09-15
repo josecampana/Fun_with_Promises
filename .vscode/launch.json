@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/_00.js"
+      "program": "${workspaceFolder}/async/00.js"
     },
     {
       "type": "node",
@@ -20,7 +20,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/_01.js"
+      "program": "${workspaceFolder}/async/01.js"
     },
         {
       "type": "node",
@@ -29,7 +29,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/_02.js"
+      "program": "${workspaceFolder}/async/02.js"
     },
     {
       "type": "node",
@@ -38,7 +38,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/00.js"
+      "program": "${workspaceFolder}/z_async/00.js"
     },
     {
       "type": "node",
@@ -47,7 +47,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/01.js"
+      "program": "${workspaceFolder}/z_async/01.js"
     },
     {
       "type": "node",
@@ -56,7 +56,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/async/02.js"
+      "program": "${workspaceFolder}/z_async/02.js"
     },
   ]
 }
