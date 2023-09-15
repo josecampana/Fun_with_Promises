@@ -17,9 +17,9 @@ So, **promises** are a great mechanism to perform **asynchronous operations** (a
 
 ## The basics
 
-## Promise hell
+## async/await pattern 
 
-## async/await pattern to the rescue
+async/await pattern: the way using async code is readable for all the audiences.
 
 ## Playing with .then() and .catch()
 
