@@ -12,14 +12,10 @@ const f3 = async () => {
   //call f1 with 4
   //call f2, with the result of f1
   //return f1 + f2
-  const res1 = await f1(4);
-  const res2 = await f2(res1);
-
-  return res2 + res1;
 };
 
 const main = async () => {
-  const res = await f3();
+  const res = f3();
   console.log(res);
 };
 
