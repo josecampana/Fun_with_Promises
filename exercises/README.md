@@ -7,9 +7,11 @@
 **Add a breakpoint in the main** function in the exercise you want to check.
 
 Go to debug option and select the exercise in the select list
+
 ![](../img/select.png)
 
 Click on the play button and enjoy
+
 ![](../img/run.png)
 
 ## [EX 00](./00.js)
