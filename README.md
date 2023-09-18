@@ -11,7 +11,7 @@ In spanish from southern Spain (Andalucía), "ahora después" (literally "now af
 
 So a **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)** is _something_ (it is an object) it will finish "ahora después" (you don't know when) **but it will finish** (in a good or a bad way).
 
-So, **promises** are a great mechanism to perform **asynchronous operations** (async form now):
+So, **promises** are a great mechanism to perform **asynchronous operations** (async from now):
 
 - calling an external API
 - calling a database
