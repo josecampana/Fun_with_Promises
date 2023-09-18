@@ -189,5 +189,6 @@ const getProductListDetails = async list => {
 const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
 ```
 
+## Exercises
 
-
+[Go to exercises](./exercises/README.md)
