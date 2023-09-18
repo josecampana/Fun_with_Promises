@@ -43,8 +43,8 @@ a.then(result => {
 When I must to use async-await instead "Classic Promise" pattern? ==> **ALWAYS**. 
 Why? Code with async/await is readable.
 
+### Classic
 ```javascript
-//Classic
 function fn(){
   return new Promise(function(resolve, error){
     fn2().then(function(result){
@@ -54,7 +54,7 @@ function fn(){
   });
 };
 
-//Classic ES6
+//ES6
 const fn = () => new Promise((resolve,error) => 
   fn2().then(result=>{
     console.log(result);
@@ -62,8 +62,10 @@ const fn = () => new Promise((resolve,error) =>
     resolve(result);
   })
 );
+```
 
-//async-await
+### Async-Await
+```javascript
 async function fn(){
   const result = await fn2(); //fn2 is an async function
 
@@ -89,7 +91,6 @@ Key points to keep in mind:
 
 You run promises in serial when you need something from the response of the promise 1 to call the promise 2.
 
-Example 1:
 ```javascript
 const f1 = async a => a + 1;
 const f2 = async a => a + 5;
@@ -101,42 +102,32 @@ const f3 = async a => {
   return res2;
 }
 
-//as we are returning res2, we don't really need to put the result into a variable and then return it, you could return directly the execution of the function:
+//as we are just returning res2, we don't really need to put the result into a variable and then return it, you could return directly the execution of the function:
 const f3 = async a => {
   const res1 = await f1(a);
 
   return f2(res1);
 }
-
 ```
 
-Example 2
-```javascript
-const f1 = async a => ({original: a, plus1: a + 1});
-const f2 = async a => a + 5;
 
-const f3 = async a => {
-  const res1 = await f1(a);
-  const res2 = await f2(res1.plus1);
-
-  return res2;
-}
-
-```
 ### Chaining promises
 
 You could use **.then()** to chain promises (serial):
 
-Example 1:
 ```javascript
 const f1 = async a => a + 1;
 const f2 = async a => a + 5;
 
 const f3 = async a => {
-  return f1(a).then(f2);
+  const res = await f1(a).then(f2);
+
+  console.log(res);
+
+  return res;
 }
 
-//more ES6
+//without the console.log()...
 const f3 = async a => f1(a).then(f2);
 ```
 
@@ -174,8 +165,29 @@ const getDetailsWithPrice = async id => {
 };
 ```
 
+## Loopings...
 
+Check [JS map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and other [array related functions](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
+Example: reuse previous code and allow to get a list of product ids.
+
+```javascript
+const getPrice = async id => fetch(`/price/${id}`);
+const getDetail= async id => fetch(`/detail/${id}`);
+
+const getDetailsWithPrice = async id => {
+  const [details, price] = await Promise.all([getPrice(id), getDetail(id)])
+
+  return { ...details, price };
+};
+
+const getProductListDetails = async list => {
+  return Promise.all(list.map(id => getDetailsWithPrice(id)))
+}
+
+//more ES6
+const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
+```
 
 
 
