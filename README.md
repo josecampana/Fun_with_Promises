@@ -1,5 +1,7 @@
 ![](./img/title.png)
 
+[Go to exercises](./exercises/README.md)
+
 # Fun with Promises
 
 In spanish from southern Spain (Andalucía), "ahora después" (literally "now after") is a fuzzy unit time. The meaing of this unit is something in between these two sentences:
@@ -153,7 +155,7 @@ const getDetailsWithPrice = async id => {
 };
 ```
 
-My real code (deconstructing):
+My real code ([**destructuring**](#more)):
 ```javascript
 const getPrice = async id => fetch(`/price/${id}`);
 const getDetail= async id => fetch(`/detail/${id}`);
@@ -167,7 +169,7 @@ const getDetailsWithPrice = async id => {
 
 ## Loopings...
 
-Check [JS map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and other [array related functions](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
+We are going to use [the map function over arrays](#array-trilogy) to loop our promises.
 
 Example: reuse previous code and allow to get a list of product ids.
 
@@ -188,6 +190,20 @@ const getProductListDetails = async list => {
 //more ES6
 const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
 ```
+
+## Links of interest
+
+- [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [Promise.all](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+- [Arrays](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### Array trilogy
+- [array map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [array filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+- [array reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+
+### More
+- [Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ## Exercises
 
