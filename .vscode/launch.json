@@ -22,7 +22,16 @@
       ],
       "program": "${workspaceFolder}/exercises/01.js"
     },
-        {
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "EX 01 (alt version)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/exercises/01z.js"
+    },
+      {
       "type": "node",
       "request": "launch",
       "name": "EX 02",

@@ -9,10 +9,8 @@ const f2 = makeSleep(async function mult2(b) {
 });
 
 const f3 = async () => {
-  const res1 = await f1(5);
-  const res2 = await f2(2);
-
-  return res2 + res1;
+  const results = await Promise.all([f1(5), f2(2)]); //it could be done more fancy by deconstructing
+  return results[0] + results[1];
 };
 
 const main = async () => {

@@ -8,10 +8,15 @@ const f2 = makeSleep(async function mult2(b) {
   return b * 2;
 });
 
-// create f3 here!
+const f3 = async () => {
+  const res1 = await f1(4);
+  const res2 = await f2(res1);
+
+  return res2 + res1;
+};
 
 const main = async () => {
-  const res = f3();
+  const res = await f3();
   console.log(res);
 };
 
