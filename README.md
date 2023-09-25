@@ -209,3 +209,7 @@ const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDet
 ## Exercises
 
 [Go to exercises](./exercises/README.md)
+
+## Articles of interest
+
+- [PromiseJS.org](https://www.promisejs.org/)

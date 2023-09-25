@@ -1,4 +1,3 @@
-//makeAsync puts to sleep the function you are invoking
 const { makeSleep, run } = require('../tools');
 
 const f1 = makeSleep(async function sum1(a) {
@@ -12,8 +11,9 @@ const f2 = makeSleep(async function mult2(b) {
 // create f3 here!
 
 const main = async () => {
-  const res = f3();
+  // const res = f3();
   console.log(res);
 };
+
 
 run(main());

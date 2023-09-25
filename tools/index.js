@@ -11,10 +11,13 @@ const sleep = sec => {
   }
 };
 
+module.exports.wait = sec => new Promise((resolve) => {
+  setTimeout(() => resolve(), sec * 1000);
+});
+
 module.exports.makeSleep = fn => async (...args) => {
   console.log(`${fn.name} started`);
-  // sleep(randomInt(3));
-  sleep(1);
+  await this.wait(3);
   console.log(`${fn.name} ended`);
 
   return fn(...args);

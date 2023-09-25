@@ -11,8 +11,9 @@ const f2 = makeSleep(async function mult2(b) {
 // create f3 here!
 
 const main = async () => {
-  const res = f3();
+  // const res = f3();
   console.log(res);
 };
+
 
 run(main());

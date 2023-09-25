@@ -14,7 +14,7 @@ Click on the play button and enjoy
 
 ![](../img/run.png)
 
-## [EX 00](./00.js)
+## Exercise 00
 
 Create function _f3_. This function must to:
 
@@ -24,7 +24,7 @@ Create function _f3_. This function must to:
 
 Call _f3_ function into _main_ function.
 
-## [EX 01](./01.js)
+## Exercise 01
 
 Create function _f3_. This function must to:
 
@@ -34,7 +34,7 @@ Create function _f3_. This function must to:
 
 Call _f3_ function into _main_ function.
 
-## [EX 02](./02.js)
+## Exercise 02
 
 Create function _f3_. This function must to:
 

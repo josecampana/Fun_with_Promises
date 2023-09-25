@@ -7,29 +7,111 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "EX 00",
+      "name": "Adrià EX 00",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/exercises/00.js"
+      "program": "${workspaceFolder}/adria/00.js"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "EX 01",
+      "name": "Adrià EX 01",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/exercises/01.js"
+      "program": "${workspaceFolder}/adria/01.js"
     },
         {
       "type": "node",
       "request": "launch",
-      "name": "EX 02",
+      "name": "Adrià EX 02",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/exercises/02.js"
+      "program": "${workspaceFolder}/adria/02.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Marta EX 00",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/marta/00.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Marta EX 01",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/marta/01.js"
+    },
+        {
+      "type": "node",
+      "request": "launch",
+      "name": "Marta EX 02",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/marta/02.js"
+    },
+    ,
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Ricardo EX 00",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/ricardo/00.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Ricardo EX 01",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/ricardo/01.js"
+    },
+      {
+      "type": "node",
+      "request": "launch",
+      "name": "Ricardo EX 02",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/ricardo/02.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Joze EX 00",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/template/00.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Joze EX 01",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/template/01.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Joze EX 02",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/template/02.js"
     }
   ]
 }
