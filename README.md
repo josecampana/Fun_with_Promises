@@ -4,6 +4,17 @@
 
 # Fun with Promises
 
+- [Promises the classic way](#promises-the-classic-way)
+- [Promises, the new way: async/await pattern ](#promises-the-new-way-asyncawait-pattern)
+- [Running promises in serial](#running-promises-in-serial)
+  - [Chaining promises](#chaining-promises)
+- [Running promises in parallel (Promise.all)](#running-promises-in-parallel-promiseall)
+- [try-catch VS .catch()](#try-catch-vs-catch)
+  - [try-catch](#try-catch)
+  - [.catch() - part i](#catch---part-i)
+  - [.catch() - part i](#catch---part-ii)
+  - [try-catch + .catch()](#mixing-it-all)
+
 In spanish from southern Spain (Andalucía), "ahora después" (literally "now after") is a fuzzy unit time. The meaing of this unit is something in between these two sentences:
 
 - I'll finish it in a few seconds
@@ -37,8 +48,9 @@ const a = new Promise((resolve, reject) => {
 a.then(result => {
   console.log(result);
 })
-
 ```
+
+[Go to content index](#fun-with-promises)
 
 ## Promises, the new way: async/await pattern 
 
@@ -89,6 +101,8 @@ Key points to keep in mind:
 - the _await_ could be used **only** inside an _async_ function
 - the _await_ does not stop the execution for real but it will wait to jump to next line of the function until the _Promise_ you are waiting for is finished.
 
+[Go to content index](#fun-with-promises)
+
 ## Running promises in serial
 
 You run promises in serial when you need something from the response of the promise 1 to call the promise 2.
@@ -112,6 +126,7 @@ const f3 = async a => {
 }
 ```
 
+[Go to content index](#fun-with-promises)
 
 ### Chaining promises
 
@@ -133,6 +148,7 @@ const f3 = async a => {
 const f3 = async a => f1(a).then(f2);
 ```
 
+[Go to content index](#fun-with-promises)
 
 ## Running promises in parallel (Promise.all)
 
@@ -167,6 +183,7 @@ const getDetailsWithPrice = async id => {
 };
 ```
 
+[Go to content index](#fun-with-promises)
 
 ## try-catch VS .catch()
 
@@ -257,6 +274,8 @@ const f2 = async () => {
 
 booth are equivalent functions.
 
+[Go to content index](#fun-with-promises)
+
 ### .catch() - part i
 
 This is the mechanism promises has to manage rejections (`try-catch` blocks captures all kind of exceptions).
@@ -294,6 +313,8 @@ undefined
 You are right, you do not need to wait here because the `.catch` is part of the **"Promise chain"**. 
 
 In this example, the `try-catch` block inside f1 **will never be executed** (except if you do mess inside `.catch()`)
+
+[Go to content index](#fun-with-promises)
 
 ### .catch() - part ii
 
@@ -374,6 +395,8 @@ catch at f1
 catch at main
 ```
 
+[Go to content index](#fun-with-promises)
+
 ### Conclusions about previous .catch() examples
 
 - definitely the `try-catch` block at _f1_ has no sense because we are no waiting for the promise resolution
@@ -440,7 +463,7 @@ TypeError: result.map is not a function
 
 ![](./img/bender.png) So yes, **do not use exclusively `.catch()`** because the **error could be in other part of your code**.
 
-
+[Go to content index](#fun-with-promises)
 
 ## Loopings...
 
@@ -465,6 +488,8 @@ const getProductListDetails = async list => {
 //more ES6
 const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
 ```
+
+[Go to content index](#fun-with-promises)
 
 ## Links of interest
 
