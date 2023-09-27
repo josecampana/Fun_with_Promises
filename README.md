@@ -9,7 +9,7 @@
 - [Running promises in serial](#running-promises-in-serial)
   - [Chaining promises](#chaining-promises)
 - [Running promises in parallel (Promise.all)](#running-promises-in-parallel-promiseall)
-- [try-catch VS .catch()](#try-catch-vs-catch)
+- [Managing errors](#managing-errors)
   - [try-catch](#try-catch)
   - [.catch() - part i](#catch---part-i)
   - [.catch() - part i](#catch---part-ii)
@@ -185,9 +185,7 @@ const getDetailsWithPrice = async id => {
 
 [Go to content index](#fun-with-promises)
 
-## try-catch VS .catch()
-
-
+## Managing errors
 
 You could use `.catch()` in your promise, add a `try-catch` block or even **combine both**. 
 
