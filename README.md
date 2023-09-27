@@ -10,6 +10,7 @@
   - [.catch() - part i](#catch---part-i)
   - [.catch() - part i](#catch---part-ii)
   - [try-catch + .catch()](#mixing-it-all)
+- [Loopings...](#loopings)
 
 ![](./img/title.png)
 
