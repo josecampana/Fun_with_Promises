@@ -494,12 +494,5 @@ const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDet
 - [Promise.all](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 - [Arrays](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-- **[MDN Javascript Reference](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference)**
-
-## Exercises
-
-[Go to exercises](./exercises/README.md)
-
-## Articles of interest
-
 - [PromiseJS.org](https://www.promisejs.org/)
+- **[MDN Javascript Reference](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference)**
