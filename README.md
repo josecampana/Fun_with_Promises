@@ -167,6 +167,281 @@ const getDetailsWithPrice = async id => {
 };
 ```
 
+
+## try-catch VS .catch()
+
+
+
+You could use `.catch()` in your promise, add a `try-catch` block or even **combine both**. 
+
+But you need to take care about what to use if you are using `await` or just returning the promise to understand what will happen in your code in case of error: [welcome to the jungle...](https://music.youtube.com/watch?v=0CNPR2qNzxk&si=Y00wW-DMRhBsWwxN)
+
+The best way to understand it is with some examples. 
+
+### try-catch
+
+```javascript
+const f1 = async () => {
+  try {
+    const res = await f2();
+    return res;
+  } catch (error) {
+    console.error('catch at f1');
+  }
+};
+
+const main = async () => {
+  try {
+    const res = await f1();
+    console.log(res);
+  } catch (error) {
+    console.error('catch at main');
+  }
+};
+```
+
+The result of executing this (in case of error) is:
+
+```bash
+catch at f1 
+undefined
+```
+
+The `undefined` is printed by `console.log(res);` at _main_ function because we are retuning nothing in our catch block...
+
+Let's check another version. As doing `const res = await f2(); return res;` has no sense (we are doing nothing with _res_ just returning it), let's change it and just return f2's promise with `return f2();`
+
+```javascript
+const f1 = async () => {
+  try {
+    return f2();
+  } catch (error) {
+    console.error('catch at f1', error);
+  }
+};
+
+const main = async () => {
+  try {
+    return f1();
+  } catch (error) {
+    console.error('catch at main', error);
+  }
+};
+```
+
+Do will have the same result when executing main? Let's see:
+
+```bash
+catch at main
+```
+:warning: the catch is at different point and we are not printing the `undefined`.
+
+- We are not printing the `undefined` message because the `console.log` is inside the `try` block after calling f1...
+- Why was the catch at a different point? Easy.
+
+In the first example, we were waiting to the promise to be resolved by doing this: `const res = await f2();` so, the `try-catch` block inside f1 is able to capture the exception (the error) when the promise of f2 is resolved as rejected (error).
+
+In the second example, as we are no waiting for the promise resolution inside f1, the `try-catch` block inside f1 could not capture the exception so the _main_ block does.
+
+By the way, _f2_ was
+```javascript
+const f2 = () => Promise.reject('fistro');
+```
+
+or
+```javascript
+const f2 = async () => { 
+  throw new Error('fistro');
+};
+```
+
+booth are equivalent functions.
+
+### .catch() - part i
+
+This is the mechanism promises has to manage rejections (`try-catch` blocks captures all kind of exceptions).
+
+```javascript
+const f1 = async () => {
+  try{
+    return f2().catch(error => {
+      console.error('catch at f2');
+    });
+  }catch(error){
+    console.error('catch at try-catch f2');
+  }
+};
+
+const main = async () => {
+  try {
+    const res = await f1();
+    console.log(res);
+  } catch (error) {
+    console.error('catch at main');
+  }
+};
+```
+
+Big surprise when executing _main_:
+
+```bash
+catch at f2
+undefined
+```
+
+> _Oh wait, you said in the previous example that if you want the catch the exception (error) at f2 `try-catch` block you need to wait for the promise resolution, but you didn't put an `await` clausule in this example!_
+
+You are right, you do not need to wait here because the `.catch` is part of the **"Promise chain"**. 
+
+In this example, the `try-catch` block inside f1 **will never be executed** (except if you do mess inside `.catch()`)
+
+### .catch() - part ii
+
+Let's see another example. In that case, we want to "manipulate" the results in case of error to allow the function to finish as a _Promise.resolve_
+
+```javascript
+const f1 = async () => {
+  try {
+    return f2().catch(error => {
+      console.error('catch at f1');
+      return 0;
+    });
+  } catch (error) {
+    console.error('catch at try-catch f1');
+  }
+};
+
+const main = async () => {
+  try {
+    const res = await f1();
+    console.log(res);
+  } catch (error) {
+    console.error('catch at main');
+  }
+};
+```
+
+The result now is:
+
+```bash
+catch at f1
+0
+```
+
+It was captured by `.catch()` at f2, forced to resolve as ok sending a 0 => main's `console.log` is printing the result in the `try` block. 
+
+Again, the `try-catch` block inside f1 is not useful
+
+Let's do something more interesting with the example by chaining promises...
+
+```javascript
+//in other languages n/0 throws and exception "Division by zero".
+//in javascript it returns Infinity
+const f3 = async a => {
+  if (!a) {
+    throw new Error('Division by zero');
+  }
+
+  return 100 / a;
+};
+
+const f1 = async () => {
+  try {
+    return f2().catch(_error => {
+      console.error('catch at f1');
+
+      return 0;
+    }).then(f3);
+  } catch (error) {
+    console.error('catch at try-catch f1');
+  }
+};
+
+const main = async () => {
+  try {
+    const res = await f1();
+    console.log(res);
+  } catch (error) {
+    console.error('catch at main');
+  }
+};
+```
+
+and the result of running _main_:
+
+```bash
+catch at f1
+catch at main
+```
+
+### Conclusions about previous .catch() examples
+
+- definitely the `try-catch` block at _f1_ has no sense because we are no waiting for the promise resolution
+- sometimes, the `try-catch` block could be hard to manage the error into a promise chain or even inside a serialized execution with `await`.
+- .catch() helps you to resolve more localized errors in your promise resolutions
+
+### Mixing it all
+
+Now we are going to mix `try-catch` (using `await` of course, we have no choice) with `.catch()` in a single example. [Let's rock](https://music.youtube.com/watch?v=WnJFQEHsSrU&si=CHlQt9Ncs-jH-H3h): 
+
+```javascript
+//in other languages n / 0 throws and exception "Division by zero".
+//in javascript it returns Infinity
+const f3 = async a => {
+  if (!a) {
+    throw new Error('Division by zero');
+  }
+
+  return 100 / a;
+};
+
+const DEFAULT_VALUE = 0;
+
+const f1 = async () => {
+
+  try {
+    const result = await f2().catch(_error => {
+      console.error('catch at f1');
+
+      return DEFAULT_VALUE;
+    }).then(f3).catch(_error => {
+      console.error('catch at f1 (2)');
+      return NaN;
+    });
+
+    console.log('result is:', result);
+
+    return result.map(item => item.result + 1);
+  } catch (error) {
+    console.error('catch at try-catch f1');
+    console.error(error);
+  }
+};
+
+const main = async () => {
+  try {
+    const res = await f1();
+    console.log(res);
+  } catch (error) {
+    console.error('catch at main');
+  }
+};
+```
+
+When runing main the logs are:
+
+```bash
+catch at f1
+catch at f1 (2)
+result is: NaN
+catch at try-catch f1
+TypeError: result.map is not a function
+```
+
+![](./img/bender.png) So yes, **do not use exclusively `.catch()`** because the **error could be in other part of your code**.
+
+
+
 ## Loopings...
 
 We are going to use [the map function over arrays](#array-trilogy) to loop our promises.
@@ -197,12 +472,6 @@ const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDet
 - [Promise.all](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 - [Arrays](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-### Array trilogy
-- [array map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-- [array filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-- [array reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
-
-### More
 - [Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 - **[MDN Javascript Reference](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference)**
 
