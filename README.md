@@ -435,7 +435,7 @@ const f1 = async () => {
   } catch (error) {
     console.error('catch at try-catch f1');
 
-    if (error?.code === 'NOT_FOUND') {
+    if (error.code === 'NOT_FOUND') {
       return 0;
     }
 
