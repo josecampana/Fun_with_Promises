@@ -434,7 +434,12 @@ const f1 = async () => {
     return result.map(item => item.result + 1);
   } catch (error) {
     console.error('catch at try-catch f1');
-    console.error(error);
+
+    if (error?.code === 'NOT_FOUND') {
+      return 0;
+    }
+
+    throw error;
   }
 };
 
