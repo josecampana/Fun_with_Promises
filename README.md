@@ -1,7 +1,3 @@
-![](./img/title.png)
-
-[Go to exercises](./exercises/README.md)
-
 # Fun with Promises
 
 - [Promises the classic way](#promises-the-classic-way)
@@ -14,6 +10,8 @@
   - [.catch() - part i](#catch---part-i)
   - [.catch() - part i](#catch---part-ii)
   - [try-catch + .catch()](#mixing-it-all)
+
+![](./img/title.png)
 
 In spanish from southern Spain (Andalucía), "ahora después" (literally "now after") is a fuzzy unit time. The meaing of this unit is something in between these two sentences:
 
