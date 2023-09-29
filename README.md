@@ -176,7 +176,7 @@ const getPrice = async id => fetch(`/price/${id}`);
 const getDetail= async id => fetch(`/detail/${id}`);
 
 const getDetailsWithPrice = async id => {
-  const [details, price] = await Promise.all([getPrice(id), getDetail(id)])
+  const [price, details] = await Promise.all([getPrice(id), getDetail(id)])
 
   return { ...details, price };
 };
@@ -236,7 +236,8 @@ const f1 = async () => {
 
 const main = async () => {
   try {
-    return await f1();
+    const res = await f1();
+    console.log(res);
   } catch (error) {
     console.error('catch at main', error);
   }
@@ -460,6 +461,7 @@ catch at f1
 catch at f1 (2)
 result is: NaN
 catch at try-catch f1
+catch at main
 TypeError: result.map is not a function
 ```
 
@@ -487,8 +489,8 @@ const getProductListDetails = async list => {
   return Promise.all(list.map(id => getDetailsWithPrice(id)))
 }
 
-//more ES6
-const getProductListDetailsES6 = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
+//equivalent:
+const getProductListDetails = async list => Promise.all(list.map(id => getDetailsWithPrice(id)));
 ```
 
 [Go to content index](#fun-with-promises)
