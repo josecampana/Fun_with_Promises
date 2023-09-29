@@ -34,6 +34,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Adrià EX 03",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/adria/03.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Marta EX 00",
       "skipFiles": [
         "<node_internals>/**"
@@ -57,6 +66,15 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/marta/02.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Marta EX 03",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/marta/03.js"
     },
     {
       "type": "node",
@@ -88,6 +106,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Ricardo EX 03",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/ricardo/03.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Isa EX 00",
       "skipFiles": [
         "<node_internals>/**"
@@ -115,6 +142,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Isa EX 03",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/isa/03.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Joze EX 00",
       "skipFiles": [
         "<node_internals>/**"
@@ -138,6 +174,15 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/template/02.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Joze EX 03",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/template/03.js"
     },
     {
       "type": "node",
