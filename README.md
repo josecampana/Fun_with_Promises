@@ -236,7 +236,7 @@ const f1 = async () => {
 
 const main = async () => {
   try {
-    return f1();
+    return await f1();
   } catch (error) {
     console.error('catch at main', error);
   }
